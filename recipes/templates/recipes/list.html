@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title%}
+    Scrumptious Recipes
+{% endblock title %}
+
+{% block content %}
+<header>
+    <nav>
+        <a href="{% url 'recipe_list' %}">Main page</a>
+
+        {% if user.is_authenticated %}
+            Hello, {{ user.username }}
+            <a href="{% url 'create_recipe' %}">Create a recipe</a>
+            <a href = "{% url 'user_logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'signup' %}">Sign up</a>
+            <a href="{% url 'user_login' %}">Login</a>
+        {% endif %}
+
+
+
+    </nav>
+</header>
+<main>
+    <h1>Scrumptious Recipes</h1>
+    <h2>All the food that's fit to eat</h2>
+    <div id="recipe-list">
+        {% for recipe in recipe_list %}
+        <div id="food-pages" class="{% cycle "" "" "color" %}">
+            <h3>
+                <a href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+            </h3>
+            <p> {{ recipe.created_on|date:"j F, Y" }} </p>
+            <img src="{{ recipe.picture }}" height="200">
+            <div>{{ recipe.rating }} stars</div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}
+
+
+
+
+
+{% comment %} {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrumptious Recipes</title>
+    <link rel="stylesheet" href="{% static "css/recipes.css" %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'recipe_list' %}">Main page</a>
+            <a href="{% url 'create_recipe' %}">Create a recipe</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Scrumptious Recipes</h1>
+        <h2>All the food that's fit to eat</h2>
+        <div id="recipe-list">
+            {% for recipe in recipe_list %}
+            <div id="food-pages">
+                <h3>
+                    <a href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+                </h3>
+                <p> {{ recipe.created_on|date:"F j, Y" }} </p>
+                <img src="{{ recipe.picture }}" height="200">
+                <div>{{ recipe.rating }} stars</div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+      Made with love by Scrumptious Recipes
+    </footer>
+</body>
+</html> {% endcomment %}
+
+{% comment %} {% block content %}
+<h1>Scrumptious Recipes</h1>
+<h2>All the food that's fit to eat</h2>
+<div id="recipe-grid">
+    {% for recipe in recipe_list %}
+        <div id="food-pages">
+            <h3>
+                <a href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+            </h3>
+            <img src="{{ recipe.picture }}" height="200">
+            <div>4.3 stars</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %} {% endcomment %}

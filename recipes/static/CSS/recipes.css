@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    background-color: #e9edc9;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+main{
+    padding: 16px;
+    margin-bottom: 75px;
+}
+
+#recipe-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 80px;
+}
+
+h1{
+    color: #b5838d;
+}
+
+footer{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 24px;
+    position: fixed;
+    background-color: #606c38;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 30px;
+    font-size: 24px;
+}
+
+nav{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 16px;
+}
+
+nav > a{
+    color: #2f3e46;
+}
+
+a{
+    text-decoration: none;
+    color: #606c38
+}
+
+a:hover{
+    color:green;
+}
+
+tr:nth-child(even){
+    background-color: #e9ecef;
+}
+
+.color{
+    background-color: #ffa1b4c2;
+    text-align: center;
+}
+
+#food-pages{
+    text-align: center;
+}
+
+.ingredients-table{
+    display: grid;
+}
